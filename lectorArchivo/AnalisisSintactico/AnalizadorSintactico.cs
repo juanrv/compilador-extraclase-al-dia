@@ -16,12 +16,16 @@ namespace lectorArchivo.AnalisisSintactico
         private StringBuilder Resultado;
         private bool Metodo;
 
+
+        private bool SaltoLinea;
+
         public Dictionary<string, object> Analizar(bool depurar, bool Metodo)
         {
             AnaLex = new AnalizadorLexico();
             this.Metodo = Metodo;
             TrazaDerivacion = new StringBuilder();
             Resultado = new StringBuilder();
+            SaltoLinea = true;
             
             if (this.Metodo)
             {
@@ -139,7 +143,7 @@ namespace lectorArchivo.AnalisisSintactico
                 FormarResultadoMorse(Componente);
                 Avanzar();
             }
-            else if (Categoria.LETRA_M.Equals(Componente.ObtenerCategoria()))
+            else if (Categoria.LETRA_N.Equals(Componente.ObtenerCategoria()))
             {
                 FormarResultadoMorse(Componente);
                 Avanzar();
@@ -393,7 +397,7 @@ namespace lectorArchivo.AnalisisSintactico
 
                 Error Error = Error.CrearErrorSintactico(Componente.ObtenerLexema(), Componente.ObtenerCategoria(), Componente.ObtenerNumeroLinea(), Componente.ObetenerPosicionInicial(), Componente.ObtenerPosicionFinal(), falla, Causa, Solucion);
                 ManejadorErrores.Reportar(Error);
-                throw new Exception("se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores...");
+                throw new Exception("Se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores... [Analizador Sintactico]");
             }
             TrazarSalida("</SimboloMorse>", jerarquia);
 
@@ -424,22 +428,27 @@ namespace lectorArchivo.AnalisisSintactico
             TrazarEntrada("<Alfabeto>", jerarquia);
             if (Categoria.LETRA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.TILDE_O_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.TILDE_A_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.TILDE_E_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.LETRA_ENYE_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else {
@@ -453,6 +462,7 @@ namespace lectorArchivo.AnalisisSintactico
             TrazarEntrada("<Numero>", jerarquia);
             if (Categoria.NUMERO_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else
@@ -467,88 +477,113 @@ namespace lectorArchivo.AnalisisSintactico
             TrazarEntrada("<SimboloLatin>", jerarquia);
             if (Categoria.ET_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PREGUNTA_ABRE_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PREGUNTA_CIERRA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.COMILLA_SIMPLE_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.ADMIRACION_ABRE_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.ADMIRACION_CIERRA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.BARRA_INCLINADA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PARENTESIS_ABRE_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PARENTESIS_CIERRA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.DOS_PUNTOS_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PUNTO_Y_COMA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.IGUAL_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.MAS_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.GUION_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             
             else if (Categoria.COMILLAS_DOBLES_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.SIGNO_PESOS_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.ARROBA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.ESPACIO_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.PUNTO_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.COMA_MORSE.Equals(Componente.ObtenerCategoria()))
             {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else if (Categoria.GUION_BAJO_MORSE.Equals(Componente.ObtenerCategoria()))
             {
-                
+                FormarResultadoLatin(Componente);
+                Avanzar();
+            }
+            else if (Categoria.FIN_DE_LINEA.Equals(Componente.ObtenerCategoria()))
+            {
+                FormarResultadoLatin(Componente);
                 Avanzar();
             }
             else
@@ -690,6 +725,9 @@ namespace lectorArchivo.AnalisisSintactico
                 case Categoria.COMA:
                     Resultado.Append(",");
                     break;
+                case Categoria.PUNTO:
+                    Resultado.Append(".");
+                    break;
                 case Categoria.INTERROGACION_CIERRA:
                     Resultado.Append("?");
                     break;
@@ -778,6 +816,215 @@ namespace lectorArchivo.AnalisisSintactico
                     Resultado.Append(" ");
                     break;
                 default:
+                    break;
+            }
+        }
+        private void FormarResultadoLatin(ComponenteLexico Componente)
+        {
+            switch (Componente.ObtenerCategoria())
+            {
+                case Categoria.LETRA_MORSE:
+                    switch (Componente.ObtenerLexema().ToUpper())
+                    {
+                        case "A":
+                            Resultado.Append(".- ");
+                            break;
+                        case "B":
+                            Resultado.Append("-... ");
+                            break;
+                        case "C":
+                            Resultado.Append("-.-. ");
+                            break;
+                        case "D":
+                            Resultado.Append("-.. ");
+                            break;
+                        case "E":
+                            Resultado.Append(". ");
+                            break;
+                        case "F":
+                            Resultado.Append("..-. ");
+                            break;
+                        case "G":
+                            Resultado.Append("--. ");
+                            break;
+                        case "H":
+                            Resultado.Append(".... ");
+                            break;
+                        case "I":
+                            Resultado.Append(".. ");
+                            break;
+                        case "J":
+                            Resultado.Append(".--- ");
+                            break;
+                        case "K":
+                            Resultado.Append("-.- ");
+                            break;
+                        case "L":
+                            Resultado.Append(".-.. ");
+                            break;
+                        case "M":
+                            Resultado.Append("-- ");
+                            break;
+                        case "N":
+                            Resultado.Append("-. ");
+                            break;
+                        case "O":
+                            Resultado.Append("--- ");
+                            break;
+                        case "P":
+                            Resultado.Append(".--. ");
+                            break;
+                        case "Q":
+                            Resultado.Append("--.- ");
+                            break;
+                        case "R":
+                            Resultado.Append(".-. ");
+                            break;
+                        case "S":
+                            Resultado.Append("... ");
+                            break;
+                        case "T":
+                            Resultado.Append("- ");
+                            break;
+                        case "U":
+                            Resultado.Append("..- ");
+                            break;
+                        case "V":
+                            Resultado.Append("...- ");
+                            break;
+                        case "W":
+                            Resultado.Append(".-- ");
+                            break;
+                        case "X":
+                            Resultado.Append("-..- ");
+                            break;
+                        case "Y":
+                            Resultado.Append("-.-- ");
+                            break;
+                        case "Z":
+                            Resultado.Append("--.. ");
+                            break;
+
+                    }
+                    break;
+                case Categoria.NUMERO_MORSE:
+
+                    switch (Componente.ObtenerLexema())
+                    {
+                        case "0":
+                            Resultado.Append("----- ");
+                            break;
+                        case "1":
+                            Resultado.Append(".---- ");
+                            break;
+                        case "2":
+                            Resultado.Append("..--- ");
+                            break;
+                        case "3":
+                            Resultado.Append("...-- ");
+                            break;
+                        case "4":
+                            Resultado.Append("....- ");
+                            break;
+                        case "5":
+                            Resultado.Append("..... ");
+                            break;
+                        case "6":
+                            Resultado.Append("-.... ");
+                            break;
+                        case "7":
+                            Resultado.Append("--... ");
+                            break;
+                        case "8":
+                            Resultado.Append("---.. ");
+                            break;
+                        case "9":
+                            Resultado.Append("----. ");
+                            break;
+                    }
+
+                    break;
+                case Categoria.PREGUNTA_ABRE_MORSE:
+                    Resultado.Append("..--.. ");
+                    break;
+                case Categoria.PREGUNTA_CIERRA_MORSE:
+                    Resultado.Append("..-.- ");
+                    break;
+                case Categoria.COMILLA_SIMPLE_MORSE:
+                    Resultado.Append(".----. ");
+                    break;
+                case Categoria.ADMIRACION_ABRE_MORSE:
+                    Resultado.Append("-.-.-- ");
+                    break;
+                case Categoria.ADMIRACION_CIERRA_MORSE:
+                    Resultado.Append("--...- ");
+                    break;
+                case Categoria.BARRA_INCLINADA_MORSE:
+                    Resultado.Append("-..-. ");
+                    break;
+                case Categoria.PARENTESIS_ABRE_MORSE:
+                    Resultado.Append("-.--. ");
+                    break;
+                case Categoria.PARENTESIS_CIERRA_MORSE:
+                    Resultado.Append("-.--.- ");
+                    break;
+                case Categoria.ET_MORSE:
+                    Resultado.Append(".-... ");
+                    break;
+                case Categoria.DOS_PUNTOS_MORSE:
+                    Resultado.Append("---... ");
+                    break;
+                case Categoria.PUNTO_Y_COMA_MORSE:
+                    Resultado.Append("-.-.-. ");
+                    break;
+                case Categoria.IGUAL_MORSE:
+                    Resultado.Append("-...- ");
+                    break;
+                case Categoria.MAS_MORSE:
+                    Resultado.Append(".-.-. ");
+                    break;
+                case Categoria.GUION_MORSE:
+                    Resultado.Append("-....- ");
+                    break;
+                case Categoria.GUION_BAJO_MORSE:
+                    Resultado.Append("..--.- ");
+                    break;
+                case Categoria.COMILLAS_DOBLES_MORSE:
+                    Resultado.Append(".-..-. ");
+                    break;
+                case Categoria.SIGNO_PESOS_MORSE:
+                    Resultado.Append("...-..- ");
+                    break;
+                case Categoria.ARROBA_MORSE:
+                    Resultado.Append(".--.-. ");
+                    break;
+                case Categoria.ESPACIO_MORSE:
+                    Resultado.Append("/ ");
+                    break;
+                case Categoria.TILDE_A_MORSE:
+                    Resultado.Append(".--.- ");
+                    break;
+                case Categoria.TILDE_E_MORSE:
+                    Resultado.Append("..-.. ");
+                    break;
+                case Categoria.TILDE_O_MORSE:
+                    Resultado.Append("---. ");
+                    break;
+                case Categoria.LETRA_ENYE_MORSE:
+                    Resultado.Append("--.-- ");
+                    break;
+                case Categoria.PUNTO_MORSE:
+                    Resultado.Append(".-.-.- ");
+                    break;
+                case Categoria.COMA_MORSE:
+                    Resultado.Append("--..-- ");
+                    break;
+                case Categoria.FIN_DE_LINEA:
+                    if (SaltoLinea)
+                    {
+                        Resultado.Append("/ ");
+                        SaltoLinea = false;
+                    }
                     break;
             }
         }

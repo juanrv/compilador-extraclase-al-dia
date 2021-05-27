@@ -229,7 +229,7 @@ namespace lectorArchivo
                 else if (Categoria.FIN_DE_ARCHIVO.Equals(Componente.ObtenerCategoria()))
                 {
                     MessageBox.Show("El programa se encuentra bien escrito");
-                    MessageBox.Show(Resultado);
+                    //MessageBox.Show(Resultado);
                     salidaDatos.Text = Resultado;
 
 
@@ -302,7 +302,7 @@ namespace lectorArchivo
                 else if (Categoria.FIN_DE_ARCHIVO.Equals(Componente.ObtenerCategoria()))
                 {
                     MessageBox.Show("El programa se encuentra bien escrito");
-                    MessageBox.Show(Resultado);
+                    //MessageBox.Show(Resultado);
                     salidaDatos.Text = Resultado;
                     
 

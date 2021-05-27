@@ -750,7 +750,7 @@ namespace lectorArchivo.Analizador
             Error Error = Error.CrearErrorLexico(Lexema, Categoria.ERROR, NumeroDeLineaActual, Puntero
                  - Lexema.Length, Puntero - 1, falla, Causa, Solucion);
             ManejadorErrores.Reportar(Error);
-            throw new Exception("Se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores...");
+            throw new Exception("Se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores...[Analizador Lexico]");
         }
 
 
@@ -2456,6 +2456,7 @@ namespace lectorArchivo.Analizador
             else if (EsFinDeLinea())
             {
                 EstadoActual = 137;
+                
 
             }
             else if ("A".Equals(CaracterActual) || "a".Equals(CaracterActual))
@@ -2719,6 +2720,7 @@ namespace lectorArchivo.Analizador
         }
         private void Estado137()
         {
+           
             CargarNuevaLineaLatin();
             
         }
@@ -2740,7 +2742,7 @@ namespace lectorArchivo.Analizador
             Error Error = Error.CrearErrorLexico(Lexema, Categoria.ERROR, NumeroDeLineaActual, Puntero
                  - Lexema.Length, Puntero - 1, falla, Causa, Solucion);
             ManejadorErrores.Reportar(Error);
-            throw new Exception("Se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores...");
+            throw new Exception("Se ha presentado un error de tipo stopper dentro del proceso de compilacion. Por favor revise la consola de errores... [Analizador Lexico]");
 
         }
 
@@ -2761,10 +2763,7 @@ namespace lectorArchivo.Analizador
         {
             Componente = ComponenteLexico.CrearComponenteSimbolo(Lexema, categoria, NumeroLinea, PosicionInicial, PosicionFinal);
         }
-        private void CrearComponenteMorseLiteral(String Lexema, Categoria categoria, int NumeroLinea, int PosicionInicial, int PosicionFinal)
-        {
-            Componente = ComponenteLexico.CrearComponenteLiteral(Lexema, categoria, NumeroLinea, PosicionInicial, PosicionFinal);
-        }
+        
 
 
     }
