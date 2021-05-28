@@ -18,6 +18,7 @@ namespace lectorArchivo.Analizador
         private ComponenteLexico Componente;
 
 
+
         public AnalizadorLexico()
         {
             this.NumeroDeLineaActual = 0;
@@ -2720,7 +2721,7 @@ namespace lectorArchivo.Analizador
         }
         private void Estado137()
         {
-           
+            
             CargarNuevaLineaLatin();
             
         }

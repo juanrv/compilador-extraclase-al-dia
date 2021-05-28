@@ -816,6 +816,7 @@ namespace lectorArchivo.AnalisisSintactico
                     Resultado.Append(" ");
                     break;
                 default:
+                    
                     break;
             }
         }
@@ -1025,6 +1026,9 @@ namespace lectorArchivo.AnalisisSintactico
                         Resultado.Append("/ ");
                         SaltoLinea = false;
                     }
+                    break;
+                default: 
+                    Resultado.Append("#");
                     break;
             }
         }
